@@ -79,7 +79,7 @@ const Page = () => {
             const token = localStorage.getItem('authToken');
             console.log("Token:", token);
 
-            const response = await fetch(`http://localhost:8080/medicine?medicineName=${searchVal}`, {
+            const response = await fetch(`${process.env.BASE_URL}/medicine?medicineName=${searchVal}`, {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -112,7 +112,7 @@ const Page = () => {
 
     const fetchPharmacyDetails = async () => {
         try {
-            const response = await fetch(`http://localhost:8080/pharmacy`);
+            const response = await fetch(`${process.env.BASE_URL}/pharmacy`);
             if (response.ok) {
                 const data = await response.json();
                 console.log(data)
